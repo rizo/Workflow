@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "node.h"
 #include "tree.h"
+#include "project.h"
 #include "funcs.h"
 #include "iotree.h"
 
@@ -52,6 +53,9 @@ int main(int argc, char **argv)
 
     funcs_add(TYPE_TREE, DESC_TREE, new_tree, delete_tree, load_tree, save_tree);
     funcs_add_io(TYPE_TREE, read_tree, write_tree);
+
+    funcs_add(TYPE_PROJ, DESC_PROJ, new_project, delete_project, load_project, save_project);
+    funcs_add_io(TYPE_PROJ, read_project, write_project);
 
     // Processa os parâmetros passados
     switch(argc)
