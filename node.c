@@ -133,6 +133,8 @@ NODE *locate_node(NODE *node, char *location)
 {
     int i;
     NODE *ret = node;
+    void (*write)(const void *, int);
+    puts("ROOT");
 
     for(i=1;isalnum(location[i]);i++)
     {
@@ -140,6 +142,10 @@ NODE *locate_node(NODE *node, char *location)
             return NULL;
     
         ret = ret->children[CHAR2INT(location[i])];
+
+        write = func_write(ret->type);
+        printf("%c:\n",location[i]);
+        write(ret->info,i*4);
     }
 
     printf("[%p]\n",ret);
